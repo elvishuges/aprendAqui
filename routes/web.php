@@ -7,6 +7,13 @@ Auth::routes([ 'verify' => true ]);
 //Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 /* --------------------- Common/User Routes END -------------------------------- */
 
+
+Route::get('/index', function () {
+    return view('index');
+});
+
+
+
 /* ----------------------- Admin Routes START -------------------------------- */
 Route::prefix('/professor')->name('professor.')->namespace('Professor')->group(function(){
     
