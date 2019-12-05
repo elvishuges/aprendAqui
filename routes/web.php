@@ -14,6 +14,19 @@ Route::get('/index', function () {
 
 
 
+
+
+Route::post('professor/register', 'ProfessorController@registerProfessor')->name('registerprofessor');
+Route::post('aluno/register', 'AlunoController@registerAluno')->name('registeraluno');
+
+Route::get('professor/getRegister', function () {
+    return view('professor.home');
+});
+
+Route::get('aluno/getRegister', function () {
+    return view('aluno.home');
+});
+
 /* ----------------------- Admin Routes START -------------------------------- */
 Route::prefix('/professor')->name('professor.')->namespace('Professor')->group(function(){
     

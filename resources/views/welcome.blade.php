@@ -8,9 +8,9 @@
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <!--<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
   <!------ Include the above in your HEAD tag ---------->
 
   <!--<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">-->
@@ -22,7 +22,7 @@
 
   <link rel="stylesheet" href="{{asset('/vendors/bootstrap/css/cursor.css')}}">
 
-  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <!--<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>-->
   <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
   <link rel="stylesheet" type="text/css" href="{{asset('/css/index-style.css')}}"/>
@@ -463,8 +463,8 @@ background text
 
 
 
-<!-- Modal Professor Cadastro -->
-<div class="modal fade " id="modalProfessorCadastro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Modal Aluno Cadastro -->
+<div class="modal fade " id="modalAlunoCadastro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header ml-0 mr-0 ">
@@ -474,7 +474,7 @@ background text
         </button>
       </div>
       <div class="modal-body ml-0 mr-0 modal-body-style text-left">
-        <form class="form" method= "POST" name="register" action="{{ route('register') }}">
+        <form class="form" method= "POST" name="register" action="{{ route('registeraluno') }}">
             @csrf
             <div class="row">
               <div class="form-group col-12" id="form-group-admin">
@@ -488,28 +488,30 @@ background text
             </div>
             <div class="row">
               <div class="form-group col-4" id=" form-group-admin2">
-                  <input type="num" class="form-control" name="telefone" id="tel" placeholder="Telefone" required>
+                  <input type="num" class="form-control" name="telefone" id="telefone" placeholder="Telefone" required>
               </div>
               <div class="form-group col-4" id="form-group-admin">
                   <input type="num" class="form-control" name="cpf" placeholder="CPF" required>
               </div>
               <div class="form-group col-4" id=" form-group-admin2">
-                  <input type="password" class="form-control" name="password" id="senha" placeholder="Senha" required>
+                  <input type="password" class="form-control" name="password" id="password" placeholder="Senha" required>
               </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn_login">Cadastrar</button>
             </div>
           
         </form>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn_login">Cadastrar</button>
-      </div>
+      
+
     </div>
   </div>
 </div>
 
 
 <!-- Modal Professor Cadastro -->
-<div class="modal fade" id="modalAlunoCadastro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalProfessorCadastro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -519,44 +521,46 @@ background text
         </button>
       </div>
       <div class="modal-body">
-        <form class="form" method= "POST" name="register" action="">
+        <form class="form" method= "POST" name="register" action="{{ route('registerprofessor') }}">
              @csrf
             <div class="row">
               <div class="form-group col-12" id="form-group-admin">
-                  <input type="text" class="form-control" name="nome" placeholder="Nome" required>
+                  <input type="text" class="form-control" name="nome1" placeholder="Nome" required>
               </div>
             </div>
             <div class="row">
               <div class="form-group col-12" id="form-group-admin">
-                  <input type="email" class="form-control" name="email" placeholder="Email" required>
+                  <input type="email" class="form-control" name="email1" placeholder="Email" required>
               </div>
             </div>
             <div class="row">
               <div class="form-group col-4" id=" form-group-admin2">
-                  <input type="num" class="form-control" name="telefone" id="tel" placeholder="Telefone" required>
+                  <input type="num" class="form-control" name="telefone1" id="telefone1" placeholder="Telefone" required>
               </div>
               <div class="form-group col-4" id="form-group-admin">
-                  <input type="num" class="form-control" name="cpf" placeholder="CPF" required>
+                  <input type="num" class="form-control" name="cpf1" placeholder="CPF" required>
               </div>
               <div class="form-group col-4" id=" form-group-admin2">
-                  <input type="password" class="form-control" name="password" id="senha" placeholder="Senha" required>
+                  <input type="password" class="form-control" name="password1" id="password1" placeholder="Senha" required>
               </div>
             </div>
             <div class="row">
               <div class="form-group col-12" id="form-group-admin">
-                  <input type="text" class="form-control" name="endereco" placeholder="Endereço" required>
+                  <input type="text" class="form-control" name="endereco1" placeholder="Endereço" required>
               </div>
             </div>
             <div class="row">
               <div class="form-group col-12" id="form-group-admin">
-                <textarea class="form-control color-input" rows="3" id="comment" name="msg" placeholder="Descreva suas habilidades" required></textarea>
+                <textarea class="form-control color-input" rows="3" id="habilidade1" name="habilidade1" placeholder="Descreva suas habilidades" required></textarea>
               </div>
+            </div>
+
+            <div class="modal-footer">
+              <button type="submit" class="btn btn_login">Cadastrar</button>
             </div>
         </form>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn_login">Cadastrar</button>
-      </div>
+      
     </div>
   </div>
 </div>
@@ -566,11 +570,9 @@ background text
         <script src="{{asset('vendors/jquery/js/jquery.min.js')}}"></script>
         <script src="{{asset('vendors/bootstrap/js/bootstrap.min.js')}}"></script>
         <script src="{{asset('vendors/bootstrap/js/wow.min.js')}}"></script>
-        <script src="{{asset('js/index.js')}}"></script>
+        
 
-        <script>
-            new WOW().init();
-        </script>
+        
 
 
 
