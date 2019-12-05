@@ -464,29 +464,44 @@ background text
 
 
 <!-- Modal Professor Cadastro -->
-<div class="modal fade" id="modalProfessorCadastro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade " id="modalProfessorCadastro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="TituloModalCentralizado">Cadastre-se</h5>
+      <div class="modal-header ml-0 mr-0 ">
+        <h5 class="modal-title " id="TituloModalCentralizado">Cadastre-se</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body ml-0 mr-0 modal-body-style text-left">
         <form class="form" method= "POST" name="register" action="{{ route('register') }}">
             @csrf
-            <div class="form-group" id="form-group-admin">
-                <input type="email" class="form-control" name="email" placeholder="Usuário" required>
+            <div class="row">
+              <div class="form-group col-12" id="form-group-admin">
+                  <input type="text" class="form-control" name="nome" placeholder="Nome" required>
+              </div>
             </div>
-            <div class="form-group" id=" form-group-admin2">
-                <input type="password" class="form-control" name="password" id="senha" placeholder="Senha" required>
+            <div class="row">
+              <div class="form-group col-12" id="form-group-admin">
+                  <input type="email" class="form-control" name="email" placeholder="Email" required>
+              </div>
             </div>
+            <div class="row">
+              <div class="form-group col-4" id=" form-group-admin2">
+                  <input type="num" class="form-control" name="telefone" id="tel" placeholder="Telefone" required>
+              </div>
+              <div class="form-group col-4" id="form-group-admin">
+                  <input type="num" class="form-control" name="cpf" placeholder="CPF" required>
+              </div>
+              <div class="form-group col-4" id=" form-group-admin2">
+                  <input type="password" class="form-control" name="password" id="senha" placeholder="Senha" required>
+              </div>
+            </div>
+          
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-        <button type="button" class="btn btn-primary">Salvar mudanças</button>
+        <button type="button" class="btn btn_login">Cadastrar</button>
       </div>
     </div>
   </div>
@@ -505,18 +520,42 @@ background text
       </div>
       <div class="modal-body">
         <form class="form" method= "POST" name="register" action="">
-            @csrf
-            <div class="form-group" id="form-group-admin">
-                <input type="email" class="form-control" name="email" placeholder="Usuário" required>
+             @csrf
+            <div class="row">
+              <div class="form-group col-12" id="form-group-admin">
+                  <input type="text" class="form-control" name="nome" placeholder="Nome" required>
+              </div>
             </div>
-            <div class="form-group" id=" form-group-admin2">
-                <input type="password" class="form-control" name="password" id="senha" placeholder="Senha" required>
+            <div class="row">
+              <div class="form-group col-12" id="form-group-admin">
+                  <input type="email" class="form-control" name="email" placeholder="Email" required>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-4" id=" form-group-admin2">
+                  <input type="num" class="form-control" name="telefone" id="tel" placeholder="Telefone" required>
+              </div>
+              <div class="form-group col-4" id="form-group-admin">
+                  <input type="num" class="form-control" name="cpf" placeholder="CPF" required>
+              </div>
+              <div class="form-group col-4" id=" form-group-admin2">
+                  <input type="password" class="form-control" name="password" id="senha" placeholder="Senha" required>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-12" id="form-group-admin">
+                  <input type="text" class="form-control" name="endereco" placeholder="Endereço" required>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-12" id="form-group-admin">
+                <textarea class="form-control color-input" rows="3" id="comment" name="msg" placeholder="Descreva suas habilidades" required></textarea>
+              </div>
             </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-        <button type="button" class="btn btn-primary">Salvar mudanças</button>
+        <button type="button" class="btn btn_login">Cadastrar</button>
       </div>
     </div>
   </div>
