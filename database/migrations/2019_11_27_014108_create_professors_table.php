@@ -15,13 +15,13 @@ class CreateProfessorsTable extends Migration
     {
         Schema::create('professors', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nome1',100);
-            $table->string('email1')->unique();
-            $table->string('telefone1',11);
-            $table->string('cpf1',11);
-            $table->string('password1',255);
-            $table->string('endereco1',255);
-            $table->text('habilidade1');
+            $table->string('nome',100);
+            $table->string('email')->unique();
+            $table->string('telefone',11);
+            $table->string('cpf',11);
+            $table->string('password',255);
+            $table->string('endereco',255);
+            $table->text('habilidade');
             $table->rememberToken();
             $table->timestamps();
         });

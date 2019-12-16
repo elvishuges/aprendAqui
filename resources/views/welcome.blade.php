@@ -399,6 +399,8 @@ background text
                   <div class="col-md-6">
                     <div class="cont_ba_opcitiy">
                       <h2>Professor</h2>
+                      {{ Session::get('messageProfessor') }}
+                     
                       <p></p>
                       
                       <button class="btn_login1" onclick="cambiar_login()">Entrar</button>
@@ -414,6 +416,9 @@ background text
                   <div class="col-md-6 ">                   
                     <div class="cont_ba_opcitiy">
                       <h2>Aluno</h2>
+                      
+                      {{ Session::get('messageAluno') }}
+                       
                       <p></p>
                       <button class="btn_sign_up" onclick="cambiar_sign_up()">Entrar</button>
 
@@ -424,29 +429,40 @@ background text
                     </div>                   
                   </div>
 
+                  @if($errors->any())
+                                  <span class="help-block">
+                                    <strong class="text-danger">{{ $errors->first() }}</strong>
+                                  </span>
+                   @endif 
+
                   <div class="cont_centrar">
                     <div >
                       <div >
                         <div class="cont_forms">
+                        <form class="form" method= "POST" name="register" action="{{ route($loginRouteProfessor) }}">
+                        @csrf
                             <div class="cont_form_login">
                                 <a href="#" onclick="ocultar_login_sign_up()" ><i class="material-icons">x</i></a>
                                 <h2>Professor</h2>
-                                <input type="text" placeholder="Username" />
-                                <input type="password" placeholder="Password" />
-                                <button class="btn_login" onclick="cambiar_login()">LOGIN</button>
+                                <input class="form-control" name="email" type="text" placeholder="Email" required/>
+                                <input  class="form-control" name="password" type="password" placeholder="Password" required/>
+                                <button  type="submit"  class="btn_login" >LOGIN</button>
                             </div>
+                            </form>
 
+                          <form class="form" method= "POST" name="register" action="{{ route('login') }}">
+                          @csrf
                            <div class="cont_form_sign_up">
-                             <a href="#" onclick="ocultar_login_sign_up()"><i class="material-icons">x</i></a>
-                             <h2>Aluno</h2>
-                                <!-- <input type="text" placeholder="Username" />
-                                <input type="password" placeholder="Password" />
-                                <input type="password" placeholder="Confirm Password" />
-                                <button class="btn_sign_up" onclick="cambiar_sign_up()">SIGN UP</button> -->
-                                <input type="text" placeholder="Username" />
-                                <input type="password" placeholder="Password" />
-                                <button class="btn_login" onclick="cambiar_login()">LOGIN</button>
+                             <a href="#"><i class="material-icons">x</i></a>
+                             <h2>Aluno</h2>                                
+                                
+                                <input class="form-control"  name="email" type="text" placeholder="Username" required/>
+                                <input class="form-control"  name="password" type="password" placeholder="Password"  required/>
+                                <button type="submit" class="btn_login" >LOGIN</button>
+                                
+                                
                           </div>
+                          </form>
                         </div>
 
                       </div>
@@ -497,6 +513,7 @@ background text
                   <input type="password" class="form-control" name="password" id="password" placeholder="Senha" required>
               </div>
             </div>
+            
             <div class="modal-footer">
               <button type="submit" class="btn btn_login">Cadastrar</button>
             </div>
@@ -525,36 +542,36 @@ background text
              @csrf
             <div class="row">
               <div class="form-group col-12" id="form-group-admin">
-                  <input type="text" class="form-control" name="nome1" placeholder="Nome" required>
+                  <input type="text" class="form-control" name="nome" placeholder="Nome" required>
               </div>
             </div>
             <div class="row">
               <div class="form-group col-12" id="form-group-admin">
-                  <input type="email" class="form-control" name="email1" placeholder="Email" required>
+                  <input type="email" class="form-control" name="email" placeholder="Email" required>
               </div>
             </div>
             <div class="row">
               <div class="form-group col-4" id=" form-group-admin2">
-                  <input type="num" class="form-control" name="telefone1" id="telefone1" placeholder="Telefone" required>
+                  <input type="num" class="form-control" name="telefone" id="telefone1" placeholder="Telefone" required>
               </div>
               <div class="form-group col-4" id="form-group-admin">
-                  <input type="num" class="form-control" name="cpf1" placeholder="CPF" required>
+                  <input type="num" class="form-control" name="cpf" placeholder="CPF" required>
               </div>
               <div class="form-group col-4" id=" form-group-admin2">
-                  <input type="password" class="form-control" name="password1" id="password1" placeholder="Senha" required>
+                  <input type="password" class="form-control" name="password" id="password1" placeholder="Senha" required>
               </div>
             </div>
             <div class="row">
               <div class="form-group col-12" id="form-group-admin">
-                  <input type="text" class="form-control" name="endereco1" placeholder="Endereço" required>
+                  <input type="text" class="form-control" name="endereco" placeholder="Endereço" required>
               </div>
             </div>
             <div class="row">
               <div class="form-group col-12" id="form-group-admin">
-                <textarea class="form-control color-input" rows="3" id="habilidade1" name="habilidade1" placeholder="Descreva suas habilidades" required></textarea>
+                <textarea class="form-control color-input" rows="3" id="habilidade" name="habilidade" placeholder="Descreva suas habilidades" required></textarea>
               </div>
             </div>
-
+            {{ Session::get('message') }}
             <div class="modal-footer">
               <button type="submit" class="btn btn_login">Cadastrar</button>
             </div>
@@ -567,15 +584,9 @@ background text
 
 
 
-        <script src="{{asset('vendors/jquery/js/jquery.min.js')}}"></script>
-        <script src="{{asset('vendors/bootstrap/js/bootstrap.min.js')}}"></script>
-        <script src="{{asset('vendors/bootstrap/js/wow.min.js')}}"></script>
-        
-
-        
-
-
-
+     <script src="{{asset('vendors/jquery/js/jquery.min.js')}}"></script>
+     <script src="{{asset('vendors/bootstrap/js/bootstrap.min.js')}}"></script>
+     <script src="{{asset('vendors/bootstrap/js/wow.min.js')}}"></script>
 
 </body>
 </html>

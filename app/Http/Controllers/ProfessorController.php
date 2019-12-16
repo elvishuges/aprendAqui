@@ -17,10 +17,14 @@ class ProfessorController extends Controller
     	$professor->password1 = $request->password1;
     	$professor->endereco1 = $request->endereco1;
     	$professor->habilidade1 = $request->habilidade1;
-
     	$professor->save();
 
     	/*return view('professor.home');*/
         return redirect()->intended('professor/getRegister');
-    }
+	}
+	
+
+	public function index(){ //falta criar o request 
+    	return 'oiiii';
+	}
 }

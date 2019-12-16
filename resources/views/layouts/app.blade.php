@@ -28,7 +28,7 @@
         }
     </style>
 
-    <title>{{config('app.name')}}</title>
+    <title>AprendAqui</title>
 </head>
 <body>
 

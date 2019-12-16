@@ -12,7 +12,7 @@ class Professor extends Authenticatable
 
     protected $table = 'professors';
     protected $primaryKey = 'id';
-    protected $fillable = ['nome1', 'email1', 'telefone1', 'cpf1', 'password1', 'endereco1', 'habilidade1'];
+    protected $fillable = ['nome', 'email', 'telefone', 'cpf', 'password', 'endereco', 'habilidade'];
 
     /*protected $fillable = [
         'name', 'email', 'password',
