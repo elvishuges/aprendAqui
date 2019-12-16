@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'failed' => 'Login ou senha incorretos',
+    'failed' => 'Login ou senha incorretos para Aluno',
     'throttle' => 'Muitas tentativas. Tente novamente mais tarde',
 
 ];

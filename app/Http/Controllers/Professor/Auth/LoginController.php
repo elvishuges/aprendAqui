@@ -65,6 +65,6 @@ class LoginController extends Controller
 
     private function loginFailed(){
         //return 'login low'
-        return redirect()->back()->withErrors(['errors' => 'usuário ou senha inválidos ']);
+        return redirect()->back()->withErrors(['errors' => 'Login ou senha incorretos para Professor ']);
     }
 }

@@ -5,9 +5,12 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 class Pedido extends Model
-{
+{   
+    protected $table = 'pedidos';
+    protected $primaryKey = 'id';
     protected $fillable = [
-        'status', 'date', 'horario_aula','descricao_aula','horaio_aula','id_aluno'
+        'status', 'data_aula', 'local_aula','horario_aula',
+        'descricao_aula','id_aluno','professor_id'
     ];
 
 }
