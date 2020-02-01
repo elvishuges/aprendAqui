@@ -32,12 +32,15 @@ Route::get('aluno/getRegister', function () {
     return view('aluno.home');
 });
 
-
 Route::get('aluno/home', function () {
     return view('aluno.home');
 });
 
+
+
 Route::get('/aluno/home','AlunoController@home')->name('aluno.home');
+Route::get('/aluno/perfilProfessor/{idProfessor}','AlunoController@perfilProfessor')->name('aluno.perfilProfessor');
+
 
 /* ----------------------- Professor Routes START -------------------------------- */
 Route::prefix('/professor')->name('professor.')->namespace('Professor')->group(function(){

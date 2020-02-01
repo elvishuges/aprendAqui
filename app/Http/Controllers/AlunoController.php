@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Aluno;
+use App\User;
+use App\Professor;
+use DB;
 
 class AlunoController extends Controller
 {
@@ -25,7 +28,13 @@ class AlunoController extends Controller
         return redirect()->intended('aluno/getRegister');
     }
 
-    public function home(){ //falta criar o request 
-    	return view('aluno.home');
+	public function home(){ //falta criar o request 
+		$professores = Professor::all();
+    	return view('aluno.home')->with(compact('professores'));
+	}
+
+	public function perfilProfessor($id){ //falta criar o request 
+		$professor = DB::table('professors')->where('id', $id)->get();		
+    	return view('aluno.perfilProfessor')->with(compact('professor'));
 	}
 }
