@@ -8,9 +8,9 @@
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <!--<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
   <!------ Include the above in your HEAD tag ---------->
 
   <!--<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">-->
@@ -22,7 +22,7 @@
 
   <link rel="stylesheet" href="{{asset('/vendors/bootstrap/css/cursor.css')}}">
 
-  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <!--<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>-->
   <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
   <link rel="stylesheet" type="text/css" href="{{asset('/css/index-style.css')}}"/>
@@ -399,6 +399,8 @@ background text
                   <div class="col-md-6">
                     <div class="cont_ba_opcitiy">
                       <h2>Professor</h2>
+                      {{ Session::get('messageProfessor') }}
+                     
                       <p></p>
                       
                       <button class="btn_login1" onclick="cambiar_login()">Entrar</button>
@@ -414,6 +416,9 @@ background text
                   <div class="col-md-6 ">                   
                     <div class="cont_ba_opcitiy">
                       <h2>Aluno</h2>
+                      
+                      {{ Session::get('messageAluno') }}
+                       
                       <p></p>
                       <button class="btn_sign_up" onclick="cambiar_sign_up()">Entrar</button>
 
@@ -424,29 +429,40 @@ background text
                     </div>                   
                   </div>
 
+                  @if($errors->any())
+                                  <span class="help-block">
+                                    <strong class="text-danger">{{ $errors->first() }}</strong>
+                                  </span>
+                   @endif 
+
                   <div class="cont_centrar">
                     <div >
                       <div >
                         <div class="cont_forms">
+                        <form class="form" method= "POST" name="register" action="{{ route($loginRouteProfessor) }}">
+                        @csrf
                             <div class="cont_form_login">
                                 <a href="#" onclick="ocultar_login_sign_up()" ><i class="material-icons">x</i></a>
                                 <h2>Professor</h2>
-                                <input type="text" placeholder="Username" />
-                                <input type="password" placeholder="Password" />
-                                <button class="btn_login" onclick="cambiar_login()">LOGIN</button>
+                                <input class="form-control" name="email" type="text" placeholder="Email" required/>
+                                <input  class="form-control" name="password" type="password" placeholder="Password" required/>
+                                <button  type="submit"  class="btn_login" >LOGIN</button>
                             </div>
+                            </form>
 
+                          <form class="form" method= "POST" name="register" action="{{ route('login') }}">
+                          @csrf
                            <div class="cont_form_sign_up">
-                             <a href="#" onclick="ocultar_login_sign_up()"><i class="material-icons">x</i></a>
-                             <h2>Aluno</h2>
-                                <!-- <input type="text" placeholder="Username" />
-                                <input type="password" placeholder="Password" />
-                                <input type="password" placeholder="Confirm Password" />
-                                <button class="btn_sign_up" onclick="cambiar_sign_up()">SIGN UP</button> -->
-                                <input type="text" placeholder="Username" />
-                                <input type="password" placeholder="Password" />
-                                <button class="btn_login" onclick="cambiar_login()">LOGIN</button>
+                             <a href="#"><i class="material-icons">x</i></a>
+                             <h2>Aluno</h2>                                
+                                
+                                <input class="form-control"  name="email" type="text" placeholder="Username" required/>
+                                <input class="form-control"  name="password" type="password" placeholder="Password"  required/>
+                                <button type="submit" class="btn_login" >LOGIN</button>
+                                
+                                
                           </div>
+                          </form>
                         </div>
 
                       </div>
@@ -463,8 +479,8 @@ background text
 
 
 
-<!-- Modal Professor Cadastro -->
-<div class="modal fade " id="modalProfessorCadastro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Modal Aluno Cadastro -->
+<div class="modal fade " id="modalAlunoCadastro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header ml-0 mr-0 ">
@@ -474,7 +490,7 @@ background text
         </button>
       </div>
       <div class="modal-body ml-0 mr-0 modal-body-style text-left">
-        <form class="form" method= "POST" name="register" action="{{ route('register') }}">
+        <form class="form" method= "POST" name="register" action="{{ route('registeraluno') }}">
             @csrf
             <div class="row">
               <div class="form-group col-12" id="form-group-admin">
@@ -488,28 +504,31 @@ background text
             </div>
             <div class="row">
               <div class="form-group col-4" id=" form-group-admin2">
-                  <input type="num" class="form-control" name="telefone" id="tel" placeholder="Telefone" required>
+                  <input type="num" class="form-control" name="telefone" id="telefone" placeholder="Telefone" required>
               </div>
               <div class="form-group col-4" id="form-group-admin">
                   <input type="num" class="form-control" name="cpf" placeholder="CPF" required>
               </div>
               <div class="form-group col-4" id=" form-group-admin2">
-                  <input type="password" class="form-control" name="password" id="senha" placeholder="Senha" required>
+                  <input type="password" class="form-control" name="password" id="password" placeholder="Senha" required>
               </div>
+            </div>
+            
+            <div class="modal-footer">
+              <button type="submit" class="btn btn_login">Cadastrar</button>
             </div>
           
         </form>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn_login">Cadastrar</button>
-      </div>
+      
+
     </div>
   </div>
 </div>
 
 
 <!-- Modal Professor Cadastro -->
-<div class="modal fade" id="modalAlunoCadastro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalProfessorCadastro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -519,7 +538,7 @@ background text
         </button>
       </div>
       <div class="modal-body">
-        <form class="form" method= "POST" name="register" action="">
+        <form class="form" method= "POST" name="register" action="{{ route('registerprofessor') }}">
              @csrf
             <div class="row">
               <div class="form-group col-12" id="form-group-admin">
@@ -533,13 +552,13 @@ background text
             </div>
             <div class="row">
               <div class="form-group col-4" id=" form-group-admin2">
-                  <input type="num" class="form-control" name="telefone" id="tel" placeholder="Telefone" required>
+                  <input type="num" class="form-control" name="telefone" id="telefone1" placeholder="Telefone" required>
               </div>
               <div class="form-group col-4" id="form-group-admin">
                   <input type="num" class="form-control" name="cpf" placeholder="CPF" required>
               </div>
               <div class="form-group col-4" id=" form-group-admin2">
-                  <input type="password" class="form-control" name="password" id="senha" placeholder="Senha" required>
+                  <input type="password" class="form-control" name="password" id="password1" placeholder="Senha" required>
               </div>
             </div>
             <div class="row">
@@ -549,31 +568,25 @@ background text
             </div>
             <div class="row">
               <div class="form-group col-12" id="form-group-admin">
-                <textarea class="form-control color-input" rows="3" id="comment" name="msg" placeholder="Descreva suas habilidades" required></textarea>
+                <textarea class="form-control color-input" rows="3" id="habilidade" name="habilidade" placeholder="Descreva suas habilidades" required></textarea>
               </div>
+            </div>
+            {{ Session::get('message') }}
+            <div class="modal-footer">
+              <button type="submit" class="btn btn_login">Cadastrar</button>
             </div>
         </form>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn_login">Cadastrar</button>
-      </div>
+      
     </div>
   </div>
 </div>
 
 
 
-        <script src="{{asset('vendors/jquery/js/jquery.min.js')}}"></script>
-        <script src="{{asset('vendors/bootstrap/js/bootstrap.min.js')}}"></script>
-        <script src="{{asset('vendors/bootstrap/js/wow.min.js')}}"></script>
-        <script src="{{asset('js/index.js')}}"></script>
-
-        <script>
-            new WOW().init();
-        </script>
-
-
-
+     <script src="{{asset('vendors/jquery/js/jquery.min.js')}}"></script>
+     <script src="{{asset('vendors/bootstrap/js/bootstrap.min.js')}}"></script>
+     <script src="{{asset('vendors/bootstrap/js/wow.min.js')}}"></script>
 
 </body>
 </html>

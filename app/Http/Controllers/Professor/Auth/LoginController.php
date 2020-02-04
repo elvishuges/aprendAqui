@@ -19,7 +19,7 @@ class LoginController extends Controller
 
     public function logout()
     {
-    Auth::guard('admin')->logout();
+    Auth::guard('professor')->logout();
     return redirect()
         ->route('professor.login')
         ->with('status','Admin has been logged out!');
@@ -27,26 +27,29 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {   
-
-        //return "oi";
+        //dd($request);
+        //return 'oi';
         $this->validator($request);
         //check if the user has too many login attempts.
         
         //attempt login.
-        if(Auth::guard('professor')->attempt($request->only('email','password'),$request->filled('remember'))){
+        if(auth()->guard('professor')->attempt($request->only('email','password'),$request->filled('remember'))){
             //Authentication passed...
+            //return 'login falhou';
             return redirect()
                 ->intended(route('professor.home'))
-                ->with('status','You are Logged in as Admin!');
+                ->with('status','Você esta logado como um professor!');
         }
         //keep track of login attempts from the user.
         //$this->incrementLoginAttempts($request);
         //Authentication failed, redirect back with input.
+        
         return $this->loginFailed();
     }
 
     private function validator(Request $request)
     {
+        return 'oi';
     //validation rules.
     $rules = [
         'email'    => 'required|email|exists:professors|min:5|max:191',
@@ -61,9 +64,7 @@ class LoginController extends Controller
     }
 
     private function loginFailed(){
-        return redirect()
-            ->back()
-            ->withInput()
-            ->with('error','Login failed, please try again!');
+        //return 'login low'
+        return redirect()->back()->withErrors(['errors' => 'Login ou senha incorretos para Professor ']);
     }
 }

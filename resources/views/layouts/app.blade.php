@@ -7,6 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
+
     <style>
         /* these styles will animate bootstrap alerts. */
         .alert{
@@ -28,7 +29,7 @@
         }
     </style>
 
-    <title>{{config('app.name')}}</title>
+    <title>AprendAqui</title>
 </head>
 <body>
 

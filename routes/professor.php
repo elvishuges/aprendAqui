@@ -1,6 +1,6 @@
 <?php
 
-Route::prefix('/professor')->name('professor')->namespace('Profeesor')->group(function(){
+Route::prefix('/professor')->name('professor.')->namespace('Professor')->group(function(){
   //All the admin routes will be defined here...
 
   Route::get('/dashboard','HomeController@index')->name('home');
@@ -9,6 +9,8 @@ Route::prefix('/professor')->name('professor')->namespace('Profeesor')->group(fu
 });
 
 Route::namespace('Auth')->group(function(){
+
+  Route::get('/dashboard','HomeController@index')->name('home');
         
     //Login Routes
     Route::get('/login','LoginController@showLoginForm')->name('login');
