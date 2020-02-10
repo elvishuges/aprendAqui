@@ -21,27 +21,18 @@
                 <div class="col-xs-12 col-sm-8">
                     <h2>{{$professor[0]->nome}}</h2>
                     <p><strong>About: </strong> Web Designer / UI. </p>
-                    <p><strong>Hobbies: </strong> {{$professor[0]->habilidade}} </p>
-                    <p><strong>Habilidades: </strong>
-                        <span class="tags">Integral</span> 
-                        <span class="tags">Limites</span>
-                        <span class="tags">Raciocínio Lógico</span>                        
-                    </p>
-					<p><strong>Telefone: </strong>
-                        <span class="tags">{{$professor[0]->telefone}}</span> 
-                                              
-                    </p>
-					<p><strong>Endereço: </strong>
-                        <span class="tags">{{$professor[0]->endereco}}</span> 
-                                              
-                    </p>
+                    <p><strong>Hobbies: </strong> {{$professor[0]->habilidade}} </p>                    
+					<p><strong>Telefone: </strong>{{$professor[0]->telefone}} </p>
+					<p><strong>Endereço: </strong>{{$professor[0]->endereco}}</p>
                 </div> 
             </div>            
             <div class="col-xs-12 divider text-center">
                 <div class="col-xs-12 col-sm-6 emphasis">
-                    <h2><strong> 20,7K </strong></h2>                    
-                    <p><small>Followers</small></p>
-                    <button class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span> Enviar convite </button>
+                    <h2><strong> 20 </strong></h2>                    
+                    <p><small>Convites</small></p>
+					<a  href="{{route('aluno.formConvite', $professor[0]->id)}}">
+                    <button  class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span> Enviar convite </button>
+					</a>
                 </div>
                 <div class="col-xs-12 col-sm-6 emphasis">
                     <h2><strong>12</strong></h2>                    

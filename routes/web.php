@@ -40,6 +40,7 @@ Route::get('aluno/home', function () {
 
 Route::get('/aluno/home','AlunoController@home')->name('aluno.home');
 Route::get('/aluno/perfilProfessor/{idProfessor}','AlunoController@perfilProfessor')->name('aluno.perfilProfessor');
+Route::get('/aluno/formConvite/{idProfessor}','AlunoController@formConvite')->name('aluno.formConvite');
 
 
 /* ----------------------- Professor Routes START -------------------------------- */

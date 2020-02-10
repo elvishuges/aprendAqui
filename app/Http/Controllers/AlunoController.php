@@ -37,4 +37,10 @@ class AlunoController extends Controller
 		$professor = DB::table('professors')->where('id', $id)->get();		
     	return view('aluno.perfilProfessor')->with(compact('professor'));
 	}
+	
+	public function formConvite($id){ //falta criar o request 
+		$professor = DB::table('professors')->where('id', $id)->get();		
+    	return view('aluno.formConvite')->with(compact('professor'));
+	}
+	
 }
