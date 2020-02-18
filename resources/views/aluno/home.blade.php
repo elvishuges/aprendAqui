@@ -10,7 +10,7 @@
 <!-- Team -->
 <section id="team" class="pb-5">
     <div class="container">
-        <h5 class="section-title h1">OUR TEAM</h5>
+        <h5 class="section-title h1">Professores</h5>
         <div class="row">
             <!-- Team member -->
            

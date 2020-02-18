@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Aluno;
 use App\User;
+use App\Pedido;
 use App\Professor;
 use DB;
 
@@ -14,8 +15,7 @@ class AlunoController extends Controller
      public function registerAluno(Request $request){ 
 
         
-    	$pessoa = new Aluno();
-    	
+    	$pessoa = new Aluno();    	
         $pessoa->nome = $request->nome;
         $pessoa->email = $request->email;
     	$pessoa->telefone = $request->telefone;
@@ -40,6 +40,24 @@ class AlunoController extends Controller
 	
 	public function formConvite($id){ //falta criar o request 
 		$professor = DB::table('professors')->where('id', $id)->get();		
+    	return view('aluno.formConvite')->with(compact('professor'));
+	}
+
+	public function enviarConvite(Request $request){ //falta criar o request 
+		dd($request->all());	
+		
+
+		// NAO EXCLUIR ESSA PARTE !!!!!!!!!!!!
+		 
+		//$pedido = new Pedido();
+		// $pedido->status = 0;
+		// $pedido->data_aula = $request->dataInicio;
+		// $pedido->local_aula = $request->localAula;
+		// $pedido->horario_aula = $request->dataInicio;
+		// $pedido->descricao_aula = $request->mensagem;
+		// $pedido->id_aluno = 0;
+		// $pedido->professor_id = 0;
+
     	return view('aluno.formConvite')->with(compact('professor'));
 	}
 	

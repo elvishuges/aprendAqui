@@ -15,7 +15,8 @@
 
                     <!--Form with header-->
 
-                    <form action="mail.php" method="post">
+                    <form action="{{ route('aluno.enviarConvite') }}" enctype="multipart/form-data" method="post">
+					@csrf
                         <div class="card border-primary rounded-0">
                             <div class="card-header p-0">
                                 <div class="bg-info text-white text-center py-2">
@@ -31,7 +32,7 @@
                                         <div class="input-group-prepend">
                                             <div class="input-group-text"><i class="fa fa-user text-info"></i></div>
                                         </div>
-                                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nome" required>
+                                        <input type="text" class="form-control" id="nombre" name="nome" placeholder="Nome" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -47,7 +48,7 @@
                                         <div class="input-group-prepend">
                                             <div class="input-group-text"><i class="fa fa-calendar text-info"></i></div>
                                         </div>
-                                        <input type="date" class="form-control" id="nombre" name="email" placeholder="Data Inicio da aula" required>
+                                        <input type="date" class="form-control" id="nombre" name="dataInicio" placeholder="Data Inicio da aula" required>
                                     </div>
                                 </div>
 
@@ -56,7 +57,7 @@
                                         <div class="input-group-prepend">
                                             <div class="input-group-text"><i class="fa fa-map text-info"></i></div>
                                         </div>
-                                        <input type="text" class="form-control" id="nombre" name="local" placeholder="Local da aula" required>
+                                        <input type="text" class="form-control" id="nombre" name="localAula" placeholder="Local da aula" required>
                                     </div>
                                 </div
 
@@ -65,12 +66,12 @@
                                         <div class="input-group-prepend">
                                             <div class="input-group-text"><i class="fa fa-comment text-info"></i></div>
                                         </div>
-                                        <textarea class="form-control" placeholder="Mensagem tu Mensaje" required></textarea>
+                                        <textarea name="mensagem" class="form-control" placeholder="Mensagem" required></textarea>
                                     </div>
                                 </div>
 
                                 <div class="text-center">
-                                    <input type="submit" value="Enviar" class="btn btn-info btn-block rounded-0 py-2">
+                                    <input type="submit"  value="Enviar" class="btn btn-info btn-block rounded-0 py-2">
                                 </div>
                             </div>
 
